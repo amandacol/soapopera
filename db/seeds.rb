@@ -5,5 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Soap.create!(name: 'Erva fina', scent: 'hemp', properties: 'emoliente', price: 20, weight: '100g', user_id: 1  )
-Soap.create!(name: 'Rosa', scent: 'rosa selvagem', properties: 'hidratante', price: 18, weight: '110g', user_id: 1 )
+
+Soap.create!(name: 'Erva fina', scent: 'Hemp', properties: 'Emoliente', price: 20, weight: '100g', user_id: 1  )
+Soap.create!(name: 'Rosa', scent: 'Rosa selvagem', properties: 'Hidratante', price: 18, weight: '110g', user_id: 1 )
