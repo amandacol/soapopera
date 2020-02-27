@@ -5,6 +5,14 @@ class SoapsController < ApplicationController
     @soaps = Soap.all
   end
 
+<<<<<<< HEAD
+  def show
+    @soap = Soap.find(params[:id])
+    @user = @soap.user
+  end
+
+=======
+>>>>>>> 07a78058b277b3e23da014ba55d0caf4d5856ac7
   def new
     @soap = Soap.new
   end
