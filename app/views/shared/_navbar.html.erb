@@ -14,13 +14,11 @@
 
         <div class="dropdown">
           <% if Order.any? %>
-          <i class="fas fa-shopping-cart dropdown-toggle"></i>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <ul>
-                <% Order.all.each do |order| %>
-                  <li> <%= render 'orders/card', order: order %> </li>
-                <% end %>
-              </ul>
+          <i class="fas fa-shopping-cart dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <% Order.all.each do |order| %>
+                <%= render 'orders/card', order: order %>
+              <% end %>
             </div>
           <% end %>
         </div>
