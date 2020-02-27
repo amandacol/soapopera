@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :soaps, only: [:index, :show, :new, :create] do
     resources :orders, only: [:new, :create, :index]
   end
+  resources :orders, only: [:destroy]
 end
