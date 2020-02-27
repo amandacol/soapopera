@@ -11,6 +11,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+
+        <div class="dropdown">
+          <% if Order.any? %>
+          <i class="fas fa-shopping-cart dropdown-toggle"></i>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <ul>
+                <% Order.all.each do |order| %>
+                  <li> <%= render 'orders/card', order: order %> </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+
         <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
