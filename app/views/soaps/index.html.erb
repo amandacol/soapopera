@@ -1,7 +1,10 @@
-<div class="container mt-5">
+<div class="container mt-4">
 
-  <div class="button-new-soap"><%= link_to "add soap", new_soap_path, class: "btn btn-primary"%></div>
-  <h2 class="text-center">Have a look at the soaps handmade by our community!</h2>
+  <div class="text-center">
+    <h2>Have a look at the soaps handmade by our community!</h2>
+    <%= link_to "Add yours!", new_soap_path, class: "btn btn-primary btn-lg mt-3"%>
+  </div>
+
   <div class="cards mt-4">
 
     <% @soaps.each do |soap| %>
