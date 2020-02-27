@@ -2,9 +2,16 @@ class SoapsController < ApplicationController
   def index
     @soaps = Soap.all
   end
+
+  def show
+    @soap = Cocktail.find(params[:id])
+    @user = @soap.user
+  end
+
   def new
     @soap = Soap.new
   end
+
   def create
     @soap = Soap.new(soap_params)
     @user = @soap.user
