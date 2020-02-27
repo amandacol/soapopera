@@ -4,7 +4,7 @@ class SoapsController < ApplicationController
   end
 
   def show
-    @soap = Cocktail.find(params[:id])
+    @soap = Soap.find(params[:id])
     @user = @soap.user
   end
 
