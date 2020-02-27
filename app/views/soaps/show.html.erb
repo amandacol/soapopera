@@ -1,0 +1,24 @@
+<div class="container mt-5 text-center">
+  <h1 class="text-center"><%= @soap.name %></h1>
+
+  <div class="row justify-content-center text-center">
+
+    <div class="col-md-6 bg-warning rounded pt-3 pb-3">
+
+
+      <h2>Scent:</h2>
+      <p><%= @soap.scent %></p>
+
+      <h2>Properties:</h2>
+      <p><%= @soap.properties %></p>
+
+      <h2>This soap was handmade by:</h2>
+      <p><%= @soap.user.email %></p>
+      <h3>Weight: <%= @soap.weight %></h3>
+      <h2 class="bg-light rounded-sm mt-4 p-2">$R<%= @soap.price %></h2>
+    </div>
+
+  </div>
+  <%= link_to("Back to soap list", soaps_path, {class: "btn btn-primary mt-3"}) %>
+</div>
+
