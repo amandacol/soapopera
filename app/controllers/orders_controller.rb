@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+   before_action :set_order, only: [:destroy]
   def new
     @order = Order.new
   end
@@ -9,7 +10,12 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.date = Time.now
     @order.save
-    redirect_to root_path
+    redirect_to soaps_path
+  end
+
+  def destroy
+    @order.destroy
+    redirect_to soaps_path, notice: 'Are you sure about it?'
   end
 
   private
