@@ -9,7 +9,7 @@ class SoapsController < ApplicationController
     @soap = Soap.find(params[:id])
     @user = @soap.user
   end
-
+  
   def new
     @soap = Soap.new
   end
