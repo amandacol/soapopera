@@ -19,6 +19,11 @@
     </div>
 
   </div>
-  <%= link_to("Back to soap list", soaps_path, {class: "btn btn-primary mt-3"}) %>
+  <div class="d-flex justify-content-center">
+  <%= link_to("Back to soap list", soaps_path, {class: "btn btn-primary mt-3 mr-3"}) %>
+  <%= simple_form_for [@soap, @order] do |s|  %>
+  <%= s.submit "Add to the cart", class: "btn btn-primary mt-3" %>
+  <% end %>
+</div>
 </div>
 

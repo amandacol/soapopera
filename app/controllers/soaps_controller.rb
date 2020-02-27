@@ -7,9 +7,10 @@ class SoapsController < ApplicationController
 
   def show
     @soap = Soap.find(params[:id])
+    @order = Order.new
     @user = @soap.user
   end
-  
+
   def new
     @soap = Soap.new
   end
@@ -22,9 +23,6 @@ class SoapsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
   end
 
   private
