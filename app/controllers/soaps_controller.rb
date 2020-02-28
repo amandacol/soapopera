@@ -4,6 +4,13 @@ class SoapsController < ApplicationController
   def index
     @soaps = Soap.all
     @soaps = policy_scope(Soap).order(created_at: :desc)
+    @markers = @soaps.map do |soap|
+      {
+        lat: soap.latitude,
+        lng: soap.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { soap: soap })
+      }
+    end
   end
 
   def show
@@ -30,6 +37,7 @@ class SoapsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def destroy

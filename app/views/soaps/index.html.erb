@@ -1,10 +1,11 @@
-<div class="container mt-4">
 
-  <div class="text-center">
+<div class="container text-center mt-4">
     <h2>Have a look at the soaps handmade by our community!</h2>
     <%= link_to "Add yours!", new_soap_path, class: "btn btn-primary btn-lg mt-3"%>
   </div>
+</div>
 
+<div class="container mt-4 d-flex">
   <div class="cards mt-4">
 
     <% @soaps.each do |soap| %>
@@ -22,4 +23,15 @@
       </div>
     <% end %>
   </div>
+
+  <div
+    id="map"
+    class="ml-3 mt-4"
+    style="width: 50%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+
 </div>
+
