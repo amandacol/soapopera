@@ -7,6 +7,9 @@ class OrderPolicy < ApplicationPolicy
   def create?
     true
   end
+  def show?
+    true
+  end
   def new?
     true
   end
