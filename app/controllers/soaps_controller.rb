@@ -7,7 +7,8 @@ class SoapsController < ApplicationController
     @markers = @soaps.map do |soap|
       {
         lat: soap.latitude,
-        lng: soap.longitude
+        lng: soap.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { soap: soap })
       }
     end
   end
