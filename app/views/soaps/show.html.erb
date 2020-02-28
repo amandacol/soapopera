@@ -1,34 +1,44 @@
 <div class="container mt-4 text-center">
+
   <h1 class="text-center"><%= @soap.name %></h1>
 
-  <div class="row justify-content-center text-center">
+  <div class="card-show rounded bg-warning">
 
-    <div class="col-md-6 bg-warning rounded pt-2 pb-3">
+    <div class="row d-flex justify-content-center align-items-center p-4">
 
+      <div class="col-md-6">
+        <%= cl_image_tag @soap.photo.key, width: 200, height: 200, crop: :fill %>
+        <h5 class="text-white">This soap was made by:</h5>
+        <p class="mb-0"><%= @soap.user.email %></p>
+      </div>
 
-      <h2>Scent:</h2>
-      <p><%= @soap.scent %></p>
+      <div class="col-md-6">
+        <h2>Scent:</h2>
+        <p><%= @soap.scent %></p>
 
-      <h2>Properties:</h2>
-      <p><%= @soap.properties %></p>
+        <h2>Properties:</h2>
+        <p><%= @soap.properties %></p>
 
-      <h2>This soap was handmade by:</h2>
-      <p><%= @soap.user.email %></p>
-      <h3>Weight: <%= @soap.weight %></h3>
-      <h2 class="bg-light rounded-sm mt-4 p-2">R$ <%= @soap.price %></h2>
+        <h3>Weight: <%= @soap.weight %></h3>
+        <h2 class="bg-light rounded-sm mt-4 p-2">R$ <%= @soap.price %></h2>
+      </div>
+
     </div>
 
   </div>
+
   <div class="d-flex justify-content-center">
     <%= link_to("Back to soap list", soaps_path, {class: "btn btn-primary mt-3 mr-3"}) %>
     <%= simple_form_for [@soap, @order] do |s|  %>
-      <%= s.submit "Add to the cart", class: "btn btn-primary mt-3" %>
+      <%= s.submit "Add to the cart", class: "btn btn-primary mt-3 mr-3" %>
     <% end %>
   </div>
+
   <% if current_user == @soap.user %>
     <p class="mt-2"><%= link_to '<i class="far fa-trash-alt"></i> Delete'.html_safe, soap_path(@soap.id), method: :delete, data: { confirm: 'Are you sure?' }%> </p>
   <% end %>
   <%= link_to '<i class="far fa-edit"></i> Edit'.html_safe, soap_path(@soap.id), class: 'mt-2' %>
+
 </div>
 
 
