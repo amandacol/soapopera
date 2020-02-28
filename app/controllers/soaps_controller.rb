@@ -1,5 +1,5 @@
 class SoapsController < ApplicationController
-  before_action :set_soap, only: [:show]
+  before_action :set_soap, only: [:show, :edit, :update, :destroy]
 
   def index
     @soaps = Soap.all
@@ -14,10 +14,19 @@ class SoapsController < ApplicationController
   end
 
   def show
-    @soap = Soap.find(params[:id])
-    authorize @soap
     @order = Order.new
     @user = @soap.user
+  end
+
+  def edit
+  end
+
+  def update
+    if @soap.update(soap_params)
+      redirect_to soap_path(@soap)
+    else
+      render :edit
+  end
   end
 
   def new
@@ -41,8 +50,6 @@ class SoapsController < ApplicationController
   end
 
   def destroy
-    @soap = Soap.find(params[:id])
-    authorize @soap
     @soap.destroy
     redirect_to soaps_path
   end
@@ -51,6 +58,7 @@ class SoapsController < ApplicationController
 
   def set_soap
     @soap = Soap.find(params[:id])
+    authorize @soap
   end
 
   def soap_params
