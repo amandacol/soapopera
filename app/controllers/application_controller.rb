@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :photo])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :photo])
   end
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
