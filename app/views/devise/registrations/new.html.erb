@@ -25,6 +25,9 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :photo,
+                required: true,
+                input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload your photo' %>
   </div>
 
   <div class="form-actions">
