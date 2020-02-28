@@ -31,3 +31,5 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:date)
   end
 end
+
+
