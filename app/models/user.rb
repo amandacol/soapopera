@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :soaps
   has_many :orders
+  validates :name, presence: true
+  validates :address, presence: true
 end
