@@ -22,6 +22,9 @@ class SoapsController < ApplicationController
     @soap = Soap.new(soap_params)
     authorize @soap
     @soap.user = current_user
+    @soap.latitude = current_user.latitude
+    @soap.longitude = current_user.longitude
+
     if @soap.save!
       redirect_to soap_path(@soap)
     else
@@ -33,7 +36,7 @@ class SoapsController < ApplicationController
     @soap = Soap.find(params[:id])
     authorize @soap
     @soap.destroy
-    redirect_to soap_path
+    redirect_to soaps_path
   end
 
   private

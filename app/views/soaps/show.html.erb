@@ -1,9 +1,9 @@
-<div class="container mt-5 text-center">
+<div class="container mt-4 text-center">
   <h1 class="text-center"><%= @soap.name %></h1>
 
   <div class="row justify-content-center text-center">
 
-    <div class="col-md-6 bg-warning rounded pt-3 pb-3">
+    <div class="col-md-6 bg-warning rounded pt-2 pb-3">
 
 
       <h2>Scent:</h2>
@@ -24,6 +24,9 @@
   <%= simple_form_for [@soap, @order] do |s|  %>
   <%= s.submit "Add to the cart", class: "btn btn-primary mt-3" %>
   <% end %>
+  <% if current_user == @soap.user %>
 </div>
+  <p class="mt-2"><%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, soap_path(@soap.id), method: :delete, data: { confirm: 'Are you sure?' }%> Delete</p>
+  <% end %>
 </div>
 
