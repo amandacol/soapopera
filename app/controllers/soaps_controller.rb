@@ -18,6 +18,9 @@ class SoapsController < ApplicationController
     authorize @soap
   end
 
+  def edit
+  end
+
   def create
     @soap = Soap.new(soap_params)
     authorize @soap
@@ -26,6 +29,14 @@ class SoapsController < ApplicationController
       redirect_to soap_path(@soap)
     else
       render :new
+    end
+  end
+
+  def update
+    if @soap.update(soap_params)
+      redirect_to @soap
+    else
+      render :edit
     end
   end
 
