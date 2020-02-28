@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :soaps
   has_many :orders
 
+  has_one_attached :photo
+
   validates :name, presence: true
   validates :address, presence: true
 
