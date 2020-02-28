@@ -1,16 +1,32 @@
 class SoapsController < ApplicationController
-  before_action :set_soap, only: [:show]
+  before_action :set_soap, only: [:show, :edit, :update, :destroy]
 
   def index
     @soaps = Soap.all
     @soaps = policy_scope(Soap).order(created_at: :desc)
+    @markers = @soaps.map do |soap|
+      {
+        lat: soap.latitude,
+        lng: soap.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { soap: soap })
+      }
+    end
   end
 
   def show
-    @soap = Soap.find(params[:id])
-    authorize @soap
     @order = Order.new
     @user = @soap.user
+  end
+
+  def edit
+  end
+
+  def update
+    if @soap.update(soap_params)
+      redirect_to soap_path(@soap)
+    else
+      render :edit
+  end
   end
 
   def new
@@ -33,6 +49,7 @@ class SoapsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def update
@@ -44,8 +61,6 @@ class SoapsController < ApplicationController
   end
 
   def destroy
-    @soap = Soap.find(params[:id])
-    authorize @soap
     @soap.destroy
     redirect_to soaps_path
   end
@@ -54,6 +69,7 @@ class SoapsController < ApplicationController
 
   def set_soap
     @soap = Soap.find(params[:id])
+    authorize @soap
   end
 
   def soap_params
