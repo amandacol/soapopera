@@ -12,12 +12,13 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.date = Time.now
     @order.save
-    redirect_to soaps_path
+    redirect_to soaps_path, notice: "Successfully added to cart!"
   end
 
   def destroy
     @order.destroy
-    redirect_to soaps_path, notice: 'Are you sure about it?'
+    authorize @order
+    redirect_to soaps_path
   end
 
   private

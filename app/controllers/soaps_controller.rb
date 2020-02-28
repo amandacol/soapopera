@@ -33,7 +33,7 @@ class SoapsController < ApplicationController
     @soap = Soap.find(params[:id])
     authorize @soap
     @soap.destroy
-    redirect_to soap_path
+    redirect_to soaps_path
   end
 
   private
