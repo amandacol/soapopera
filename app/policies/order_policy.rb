@@ -13,4 +13,7 @@ class OrderPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+  def deliver?
+    true
+  end
 end
