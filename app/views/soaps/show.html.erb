@@ -7,19 +7,24 @@
     <div class="row d-flex justify-content-center align-items-center p-4">
 
       <div class="col-md-6">
-        <%= cl_image_tag @soap.photo.key, width: 200, height: 200, crop: :fill %>
+        <% if @soap.photo.attached? %>
+          <%= cl_image_tag @soap.photo.key, width: 200, height: 200, crop: :fill %>
+        <% else %>
+          <img src="https://images.unsplash.com/photo-1570194065650-821cfb9b44a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" />
+        <% end %>
         <h5 class="text-white">This soap was made by:</h5>
         <p class="mb-0"><%= @soap.user.email %></p>
       </div>
 
       <div class="col-md-6">
-        <h2>Scent:</h2>
+        <h2>Scent</h2>
         <p><%= @soap.scent %></p>
 
-        <h2>Properties:</h2>
+        <h2>Properties</h2>
         <p><%= @soap.properties %></p>
 
-        <h3>Weight: <%= @soap.weight %></h3>
+        <h2>Weight</h2>
+        <p><%= @soap.weight %></p>
         <h2 class="bg-light rounded-sm mt-4 p-2">R$ <%= @soap.price %></h2>
       </div>
 
@@ -34,13 +39,15 @@
     <% end %>
   </div>
 
-  <% if current_user == @soap.user %>
+  <div class="d-flex justify-content-center mt-2">
 
-  <%=   link_to '  <i class="far fa-edit"></i> Edit'.html_safe, edit_soap_path(@soap.id) %> </p>
+    <% if current_user == @soap.user %>
 
-    <p class="mt-2"><%= link_to '<i class="far fa-trash-alt"></i> Delete'.html_safe, soap_path(@soap.id), method: :delete, data: { confirm: 'Are you sure?' }%> </p>
+      <p class="mr-4"><%=link_to '<i class="far fa-edit"></i> Edit'.html_safe, edit_soap_path(@soap.id)%></p>
+      <p class="ml-4"><%= link_to '<i class="far fa-trash-alt"></i> Delete'.html_safe, soap_path(@soap.id), method: :delete, data: { confirm: 'Are you sure?' }%> </p>
 
-  <% end %>
+    <% end %>
+  </div>
 
 </div>
 
