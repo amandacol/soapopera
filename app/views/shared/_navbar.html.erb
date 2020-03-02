@@ -13,12 +13,13 @@
       <% if user_signed_in? %>
 
         <div class="dropdown">
-          <% if Order.any? %>
+          <% if current_user.orders.where(delivered: false).any? %>
           <i class="fas fa-shopping-cart dropdown-toggle mr-3 mt-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <% Order.all.each do |order| %>
+              <% current_user.orders.where(delivered: false).each do |order| %>
                 <%= render 'orders/card', order: order %>
               <% end %>
+              <%= link_to '<button type="button" class="btn btn-primary">Buy</button>'.html_safe, deliver_orders_path, method: :post %>
             </div>
           <% end %>
         </div>

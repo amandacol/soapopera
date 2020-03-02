@@ -21,6 +21,13 @@ class OrdersController < ApplicationController
     redirect_to soaps_path
   end
 
+  def deliver
+    orders = current_user.orders.where(delivered: false)
+    authorize orders
+    orders.each { |order| order.update(delivered: true)}
+    redirect_to soaps_path, notice: "..!"
+  end
+
   private
 
   def set_order
