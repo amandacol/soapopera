@@ -1,6 +1,9 @@
-<div class="container text-center mt-4 bg-info p-5 rounded">
+<div class="container text-center rounded">
+   <div class="row">
+    <div class="col-sm-6 offset-sm-3 bg-info rounded p-3" style="box-shadow: 0 0 15px rgba(0,0,0,0.2);">
 
   <%= simple_form_for @soap do |f| %>
+
     <div>
       <%= f.input :name %>
     </div>
@@ -21,9 +24,9 @@
     </div>
 
     <div>
-      <%= f.button :submit, class: 'btn btn-warning mb-3' %>
+      <%= f.button :submit, class: 'btn btn-warning mb-1' %>
     </div>
   <% end %>
-
-  <%= link_to("Back to list", root_path) %>
+</div>
+</div>
 </div>
