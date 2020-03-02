@@ -1,6 +1,9 @@
 <div class="container mt-3">
 
-  <h1 class="d-flex justify-content-center">Create a new soap!</h1>
+  <div class="text-center mb-3">
+    <h2>Add a new soap!</h2>
+    <%= link_to "Back to list", soaps_path %>
+  </div>
 
   <%= render 'form', soap: @soap %>
 
