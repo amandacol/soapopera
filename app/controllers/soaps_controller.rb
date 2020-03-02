@@ -2,8 +2,12 @@ class SoapsController < ApplicationController
   before_action :set_soap, only: [:show, :edit, :update, :destroy]
 
   def index
-    @soaps = Soap.all
-    @soaps = policy_scope(Soap).order(created_at: :desc)
+    if params[:query].present?
+      @soaps = policy_scope(Soap).search_by_name_and_scent(params[:query])
+    else
+      @soaps = policy_scope(Soap)
+    end
+    @soaps = @soaps.order(created_at: :desc)
     @markers = @soaps.map do |soap|
       {
         lat: soap.latitude,

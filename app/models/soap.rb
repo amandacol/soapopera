@@ -7,4 +7,11 @@ class Soap < ApplicationRecord
   validates :properties, presence: true
   validates :price, presence: true
   validates :weight, presence: true
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_and_scent,
+    against: [ :name, :scent, :properties ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

@@ -1,7 +1,19 @@
 
 <div class="container text-center mt-4">
     <h2>Have a look at the soaps handmade by our community!</h2>
-    <%= link_to "Add yours!", new_soap_path, class: "btn btn-primary btn-lg mt-3"%>
+    <form class="form-inline d-flex justify-content-center">
+     <div class="form-group mx-sm-3">
+    <%= form_tag soaps_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a soap"
+  %>
+</div>
+  <%= submit_tag "Search", class: "btn btn-primary btn-lg" %>
+<% end %>
+  </form>
+    <%= link_to "Add yours!", new_soap_path, class: "btn btn-info btn-lg mt-3"%>
   </div>
 </div>
 
