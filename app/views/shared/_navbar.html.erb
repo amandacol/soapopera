@@ -19,7 +19,9 @@
               <% current_user.orders.where(delivered: false).each do |order| %>
                 <%= render 'orders/card', order: order %>
               <% end %>
-              <%= link_to '<button type="button" class="btn btn-primary">Buy</button>'.html_safe, deliver_orders_path, method: :post %>
+              <div class="card-orders-infos d-flex justify-content-center mt-3">
+                <%= link_to '<button type="button" class="btn btn-primary">Checkout</button>'.html_safe, deliver_orders_path, method: :post %>
+              </div>
             </div>
           <% end %>
         </div>
