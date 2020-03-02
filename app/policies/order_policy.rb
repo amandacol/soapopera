@@ -16,4 +16,7 @@ class OrderPolicy < ApplicationPolicy
   def destroy?
     true
   end
+  def deliver?
+    true
+  end
 end
