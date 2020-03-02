@@ -5,19 +5,19 @@
   <%= simple_form_for @soap do |f| %>
 
     <div>
-      <%= f.input :name %>
+      <%= f.input :name,  :maxlength => 15 %>
     </div>
     <div>
-     <%= f.input :scent %>
+     <%= f.input :scent, :maxlength => 15 %>
     </div>
     <div>
-     <%= f.input :properties%>
+     <%= f.input :properties, :maxlength => 30 %>
     </div>
     <div>
-     <%= f.input :price%>
+     <%= f.input :price, :maxlength => 6%>
     </div>
     <div>
-     <%= f.input :weight%>
+     <%= f.input :weight, :maxlength => 6 %>
     </div>
     <div>
      <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
