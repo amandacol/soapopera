@@ -1,1 +1,34 @@
 // Specific CSS for your home-page
+body, html {
+  height: 100%;
+}
+
+.parallax {
+  /* The image used */
+  position: relative;
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    background-color: $light;
+    padding: 20px;
+    opacity: .7;
+}
+
+.caption * {
+  opacity: 1;
+}
+
+

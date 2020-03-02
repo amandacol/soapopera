@@ -5,5 +5,10 @@ Rails.application.routes.draw do
   resources :soaps do
     resources :orders
   end
-  resources :orders, only: [:destroy]
+  resources :orders, only: [:destroy] do
+    collection do
+      post 'deliver', to: "orders#deliver"
+    end
+  end
+
 end
