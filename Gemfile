@@ -10,6 +10,7 @@ gem 'redis'
 gem 'pundit'
 gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
+gem "paranoia", "~> 2.2"
 
 
 gem 'autoprefixer-rails'
