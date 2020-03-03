@@ -24,7 +24,10 @@ class OrdersController < ApplicationController
   def deliver
     orders = current_user.orders.where(delivered: false)
     authorize orders
-    orders.each { |order| order.update(delivered: true)}
+    orders.each do |order|
+      order.delivered = true #metodo usado para "pular" a validacao do belongs_to
+      order.save(validate: false)
+    end
     redirect_to soaps_path, notice: "..!"
   end
 
