@@ -15,9 +15,14 @@
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
+
     <%= yield %>
+    <% unless params[:action] == "home" %>
+      <%= render 'shared/footer' %>
+    <%end%>
     <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
+
   </body>
 </html>
