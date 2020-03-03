@@ -15,7 +15,6 @@
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
-
     <%= yield %>
     <% unless params[:action] == "home" %>
       <%= render 'shared/footer' %>

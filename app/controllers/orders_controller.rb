@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     orders = current_user.orders.where(delivered: false)
     authorize orders
     orders.each { |order| order.update(delivered: true)}
-    redirect_to soaps_path, notice: "..!"
+    redirect_to soaps_path, notice: "Thank's for your purchase..!"
   end
 
   private
