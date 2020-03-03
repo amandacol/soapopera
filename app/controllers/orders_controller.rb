@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
       order.delivered = true #metodo usado para "pular" a validacao do belongs_to
       order.save(validate: false)
     end
-    redirect_to soaps_path, notice: "..!"
+    redirect_to soaps_path, notice: "Thank's for your purchase..!"
   end
 
   private
