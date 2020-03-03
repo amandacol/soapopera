@@ -41,7 +41,11 @@
             <p><%= soap.weight %></p>
           </div>
           <h2 class="card-soap-pricing">R$ <%= soap.price %></h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <% if soap.user.photo.attached? %>
+            <%= cl_image_tag soap.user.photo.key, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+            <%= cl_image_tag 'user', crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
         </div>
       </div>
     <% end %>
